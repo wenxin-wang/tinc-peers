@@ -1,0 +1,2 @@
+#!/bin/sh
+ip l set $INTERFACE down

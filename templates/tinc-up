@@ -1,0 +1,3 @@
+#!/bin/sh
+ip l set $INTERFACE up
+ip a add @addr@ dev $INTERFACE
