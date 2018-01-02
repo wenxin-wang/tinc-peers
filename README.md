@@ -16,7 +16,7 @@ relevant files/directory.
 ## Init and Add Hosts
 
 ```bash
-./init.sh $dir $subnet4
+./init.sh $dir
 ./add-host.sh $dir $host1
 ./add-host.sh $dir $host2
 # Add address if a host could be connected to
@@ -27,5 +27,8 @@ vi $dir/_hosts/$host2
 ## Connecting Peers
 
 ```bash
-./add-peer.sh $dir $host1 $host2
+vi $dir/peers.txt
+./gen-peers.sh $dir
+vi $dir/ssh.txt
+./sync-config-key.sh $dir
 ```
