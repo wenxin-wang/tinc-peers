@@ -2,22 +2,20 @@
 
 trap '>&2 echo Error on line $LINENO' ERR
 
-if [ $# -ne 2 ]; then
-    echo usage: $0 dir subnet
+if [ $# -ne 1 ]; then
+    echo usage: $0 dir
     exit 1
 fi
 
 dir=$1
-subnet=$2
 
-subnet_txt=$dir/subnet.txt
 peers_txt=$dir/peers.txt
 
-if [ -e $subnet_txt ]; then
-    echo "$subnet_txt already exists"
-    exit 1
-fi
-
 mkdir -p $dir
-echo "$subnet" >$subnet_txt
-touch $peers_txt
+if [ ! -e $peers_txt ]; then
+    cat <<EOF >$peers_txt
+# addr will be used as addr/30
+# peer1:port1 addr1 peer2:port2 addr2
+# peer2:port1 addr1 peer3:port2 addr2
+EOF
+fi
